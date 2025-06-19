@@ -31,6 +31,75 @@ A comprehensive Power BI dashboard that provides deep insights into healthcare b
 - Simulated healthcare billing and patient records
 - Aggregated cost breakdowns by department/procedure
 
+# 📘 README: Healthcare Provider Dashboard (Power BI)
+
+## 🧠 Objective:
+To visualize and analyze hospital billing data with focus on diagnosis, procedure, and departmental trends using Power BI.
+
+---
+
+## 📊 Key Metrics & DAX Calculations
+
+### ✅ Total Billing Amount
+```dax
+TotalBilling = SUM(FactBilling[BillingAmount])
+```
+
+### ✅ Average Billing Cost Per Visit
+``` dax
+AvgBillingPerVisit = DIVIDE([TotalBilling], DISTINCTCOUNT(FactBilling[VisitID]))
+```
+### ✅ Room Cost
+``` dax
+TotalRoomCost = SUM(FactBilling[RoomCost])
+AvgRoomCostPerVisit = DIVIDE([TotalRoomCost], DISTINCTCOUNT(FactBilling[VisitID]))
+```
+### ✅ Medication Cost
+``` dax
+TotalMedicationCost = SUM(FactBilling[MedicationCost])
+AvgMedicationCost = DIVIDE([TotalMedicationCost], DISTINCTCOUNT(FactBilling[VisitID]))
+```
+### ✅ Treatment Cost
+``` dax
+TotalTreatmentCost = SUM(FactBilling[TreatmentCost])
+AvgTreatmentCost = DIVIDE([TotalTreatmentCost], DISTINCTCOUNT(FactBilling[VisitID]))
+```
+### ✅ Insurance Covered & Out-of-Pocket
+``` dax
+TotalInsurance = SUM(FactBilling[InsuranceAmount])
+AvgInsurancePerVisit = DIVIDE([TotalInsurance], DISTINCTCOUNT(FactBilling[VisitID]))
+
+OutOfPocket = [TotalBilling] - [TotalInsurance]
+AvgOutOfPocket = DIVIDE([OutOfPocket], DISTINCTCOUNT(FactBilling[VisitID]))
+```
+
+📌 Dashboard Pages
+Overview Page
+
+*KPIs & total billing summaries
+
+*Billing by Procedure, Department, Diagnosis
+
+*Interactive map: State/City filter
+
+Trend Analysis
+
+*Monthly and Weekly Trends
+
+*Previous vs Current Month and Week billing
+
+*Drilldowns by Weekdays and Departments
+
+🧰 Tools & Stack
+*Power BI Desktop
+
+*Data Modeling: Star schema
+
+*DAX Measures
+
+*Bing Maps integration
+
+
 ---
 📌 **For feedback or collaboration:** [Connect on LinkedIn](https://linkedin.com/in/karthik-vendipalli)
 
